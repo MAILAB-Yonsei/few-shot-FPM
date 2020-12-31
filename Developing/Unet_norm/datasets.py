@@ -9,15 +9,15 @@ from FPM_utils import extract_FPM_images
 class ImageDataset(Dataset):
     def __init__(self, opt, CTF, indices_f, is_valid=False, is_testing=False, test_num=1, aug_seq=None):
         if is_testing:
-            self.file_dir = sorted(glob('../../../Data/%s/Test/*.mat' % (opt.dataset_name)))
+            self.file_dir = sorted(glob('../../Data/%s/Test/*.mat' % (opt.dataset_name)))
             if test_num != -1: # -1 means using all data for testing
                 self.file_dir = self.file_dir[:test_num]
         elif is_valid:
-            self.file_dir = sorted(glob('../../../Data/%s/Valid/*.mat' % (opt.dataset_name)))
+            self.file_dir = sorted(glob('../../Data/%s/Valid/*.mat' % (opt.dataset_name)))
             if test_num != -1: # -1 means using all data for testing
                 self.file_dir = self.file_dir[:test_num]
         else:
-            self.file_dir = sorted(glob('../../../Data/%s/Train/*.mat' % (opt.dataset_name)))
+            self.file_dir = sorted(glob('../../Data/%s/Train/*.mat' % (opt.dataset_name)))
 
         self.is_testing = is_testing
         self.aug_seq = aug_seq
